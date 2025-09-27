@@ -3,20 +3,20 @@
 ---
 
 ## 0) Предварительная подготовка
-- (Windows) Установите WSL2, репозиторий храните в Linux‑файловой системе WSL (`\\wsl$\Ubuntu\home\<имя_пользователя>\...`)
-- Установите Docker Engine
+- (Windows) [Установите WSL2](wsl.md), репозиторий храните в Linux‑файловой системе WSL (`\\wsl$\Ubuntu\home\<имя_пользователя>\...`)
+- [Установите Docker Engine](docker.md)
 
 ---
 
 ## 1) Клонирование репозиторий курсовой работы
-1. Клонируйте репозиторий postgresql-dba-группа
+1. Клонируйте репозиторий `postgresql-dba-группа`
 2. Откройте **терминал в корне репозитория** (там, где `docker-compose.yml`)
 3. Изучите содержимое файлов репозитория:
-  - .env -- файл, в котором задаются значения переменных окружения, используемые для конфигурирования
-  - docker-compose.yml -- файл, определяющий конфигурацию двух сервисов: pg (СУБД PostgreSQL) и pgadmin (клиент pgAdmin 4)
-  - config/ -- каталог, содержащий конфигурацию сервера PostgreSQL (postgresql.conf, pg_hba.conf), он монтируется в контейнер
-  - scripts/ -- каталог, содержащий скрипт для удобного подключения к PosgreSQL в контейнере
-  - pgadmin/ -- каталог, содержащий конфигурационный файл для pgAdmin, который автоматически добавлет в него подключение к серверу
+  - `.env` -- файл, в котором задаются значения переменных окружения, используемые для конфигурирования
+  - `docker-compose.yml` -- файл, определяющий конфигурацию двух сервисов: pg (СУБД PostgreSQL) и pgadmin (клиент pgAdmin 4)
+  - `config/` -- каталог, содержащий конфигурацию сервера PostgreSQL (`postgresql.conf`, `pg_hba.conf`), он монтируется в контейнер
+  - `scripts/` -- каталог, содержащий скрипт для удобного подключения к PosgreSQL в контейнере
+  - `pgadmin/` -- каталог, содержащий конфигурационный файл для pgAdmin, который автоматически добавлет в него подключение к серверу
 
 ---
 
@@ -59,7 +59,7 @@ SELECT version();
 docker compose exec -e PSQLRC=/workspace/.psqlrc db psql -U postgres -d app
 ```
 
-### 3.2 Через pgAdmin/DBeaver
+### 3.2 Через pgAdmin/DBeaver/Datagrip
 
 - **pgAdmin:** http://localhost:8081  (логин `admin@example.com`, пароль `admin`). Сервер **Local Primary** уже добавлен. Пароль `postgres`.
 - **DBeaver/Datagrip:** Host `localhost`, Port `5432`, DB `app`, User `postgres`, Password `postgres`.
@@ -96,4 +96,4 @@ rm -rf archived_wal/* backups/*
 1. Скрин `docker compose ps`.
 2. Скрин/вставка из psql: `SELECT version();` и `\conninfo`.
 3. Результат `SHOW data_directory;` — подтверждение живого кластера.
-4. (Опционально) Скрин pgAdmin с подключением **Local Primary**.
+4. Скрин pgAdmin/DBeaver/Datagrip с подключением к СУБД.
