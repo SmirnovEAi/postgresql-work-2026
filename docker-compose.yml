@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: pg-primary
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${PRIMARY_PORT}:5432"
+    volumes:
+      - pg_primary_data:/var/lib/postgresql/data
+      - ./config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./init:/docker-entrypoint-initdb.d:ro
+      - ./archived_wal:/archived_wal
+      - ./backups:/backups
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pg-admin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - db
+    volumes:
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+
+volumes:
+  pg_primary_data: {}
