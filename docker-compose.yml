@@ -17,6 +17,7 @@ services:
       - ./init:/docker-entrypoint-initdb.d:ro
       - ./archived_wal:/archived_wal
       - ./backups:/backups
+      - ./.psqlrc:/var/lib/postgresql/.psqlrc:ro
     command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
 
   pgadmin:

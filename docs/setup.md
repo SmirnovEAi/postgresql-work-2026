@@ -56,8 +56,10 @@ SELECT version();
 Если скрипт не работает:
 
 ```bash
-docker compose exec -e PSQLRC=/workspace/.psqlrc db psql -U postgres -d app
+docker compose exec -u postgres db psql -U postgres -d app
 ```
+
+В случае необходимости в этой команде можно изменить имя пользователя (в примере -- `postgres` 2 раза), имя сервиса, куда происходит подключение (в примере -- `db`), имя базы данных (в примере -- `app`).
 
 ### 3.2 Через pgAdmin/DBeaver/Datagrip
 
@@ -83,17 +85,33 @@ SHOW hba_file;
 ```bash
 docker compose down
 ```
+- Перезапустить:
+```bash
+docker compose restart
+```
 - Сбросить (удалит данные и бэкапы):
 ```bash
 # Будьте осторожны: удаляет тома!
 docker compose down -v
 rm -rf archived_wal/* backups/*
 ```
-
+- Все предыдущие команды работают со всеми сервисами (и `db`, и `pgadmin`), перечисленными в `docker-compose.yml`. Есть возможность управлять только одном сервисом, не трогая другой:
+```bash
+docker compose restart db   # перезапуск сервера
+docker compose down pgadmin # остановка pgAdmin
+```
 ---
 
-## 6) Содержимое пояснительной записки
-1. Скрин `docker compose ps`.
-2. Скрин/вставка из psql: `SELECT version();` и `\conninfo`.
-3. Результат `SHOW data_directory;` — подтверждение живого кластера.
-4. Скрин pgAdmin/DBeaver/Datagrip с подключением к СУБД.
+## 5) Просмотр логов
+- Остановить:
+```bash
+docker compose logs db      # логи сервера
+docker compose logs pgadmin # логи pgAdmin
+```
+---
+
+# Содержимое пояснительной записки
+1. Снимок экрана `docker compose ps`.
+2. Снимок экрана/вставка из psql: `SELECT version();` и `\conninfo`.
+3. Результат `SHOW data_directory;` -- подтверждение живого кластера.
+4. Снимок экрана pgAdmin/DBeaver/Datagrip с подключением к СУБД.
