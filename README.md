@@ -5,3 +5,6 @@
 1. [Управление сервером](docs/1-server-management.md)
 2. [Использование psql](docs/2-psql)
 3. [Конфигурирование сервера](docs/3-configuration.md)
+4. Общее устройство PostgreSQL
+5. Изоляция и многоверсионность
+6. [Очистка](docs/6-vacuum.md)
