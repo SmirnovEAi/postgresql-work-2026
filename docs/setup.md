@@ -12,11 +12,11 @@
 1. Клонируйте репозиторий `postgresql-dba-группа`
 2. Откройте **терминал в корне репозитория** (там, где `docker-compose.yml`)
 3. Изучите содержимое файлов репозитория:
-  - `.env` -- файл, в котором задаются значения переменных окружения, используемые для конфигурирования
-  - `docker-compose.yml` -- файл, определяющий конфигурацию двух сервисов: pg (СУБД PostgreSQL) и pgadmin (клиент pgAdmin 4)
-  - `config/` -- каталог, содержащий конфигурацию сервера PostgreSQL (`postgresql.conf`, `pg_hba.conf`), он монтируется в контейнер
-  - `scripts/` -- каталог, содержащий скрипт для удобного подключения к PosgreSQL в контейнере
-  - `pgadmin/` -- каталог, содержащий конфигурационный файл для pgAdmin, который автоматически добавлет в него подключение к серверу
+    - `.env` -- файл, в котором задаются значения переменных окружения, используемые для конфигурирования
+    - `docker-compose.yml` -- файл, определяющий конфигурацию двух сервисов: `db` (СУБД PostgreSQL) и `pgadmin` (клиент pgAdmin 4)
+    - `config/` -- каталог, содержащий конфигурацию сервера PostgreSQL (`postgresql.conf`, `pg_hba.conf`), он монтируется в контейнер
+    - `scripts/` -- каталог, содержащий скрипт для удобного подключения к PostgreSQL в контейнере
+    - `pgadmin/` -- каталог, содержащий конфигурационный файл для pgAdmin, который автоматически добавлет в него подключение к серверу
 
 ---
 
@@ -69,9 +69,11 @@ docker compose exec -u postgres db psql -U postgres -d app
 ---
 
 ## 4) Данные и конфиги
+
 - Данные хранятся в docker‑томе `pg_primary_data` (персистентно).
 - Конфиги берутся из `config/postgresql.conf` и `config/pg_hba.conf`.
 - Проверка путей в psql:
+
 ```sql
 SHOW data_directory;
 SHOW config_file;
@@ -81,31 +83,40 @@ SHOW hba_file;
 ---
 
 ## 5) Остановка/перезапуск/сброс
+
 - Остановить:
+
 ```bash
 docker compose down
 ```
+
 - Перезапустить:
+
 ```bash
 docker compose restart
 ```
+
 - Сбросить (удалит данные и бэкапы):
+
 ```bash
 # Будьте осторожны: удаляет тома!
 docker compose down -v
 rm -rf archived_wal/* backups/*
 ```
+
 - Все предыдущие команды работают со всеми сервисами (и `db`, и `pgadmin`), перечисленными в `docker-compose.yml`. Есть возможность управлять только одном сервисом, не трогая другой:
+
 ```bash
-docker compose restart db   # перезапуск сервера
+docker compose restart db   # перезапуск сервера PostgreSQL
 docker compose down pgadmin # остановка pgAdmin
 ```
+
 ---
 
 ## 5) Просмотр логов
-- Остановить:
+
 ```bash
-docker compose logs db      # логи сервера
+docker compose logs db      # логи сервера PostgreSQL
 docker compose logs pgadmin # логи pgAdmin
 ```
 ---
