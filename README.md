@@ -14,5 +14,7 @@
 10. [Табличные пространства](docs/10-tablespaces.md)
 11. [Низкий уровень](docs/11-lowlevel.md)
 12. [Мониторинг](docs/12-monitoring.md)
-13. [Управление доступом](docs/13-monitoring.md)
+13. [Управление доступом](docs/13-access.md)
 14. [Резервное копирование](docs/14-backup.md)
+15. [Физическая репликация](docs/15-physical-replication.md)
+16. [Логическая репликация](docs/16-logical-replication.md)
