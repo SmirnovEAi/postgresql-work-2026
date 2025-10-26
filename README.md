@@ -1,20 +1,25 @@
 # Курсовая работа по администрированию PostgreSQL
 
+### Предварительная информация
 [Установка PostgreSQL в контейнере](docs/setup.md)
-
-1. [Управление сервером](docs/1-server-management.md)
-2. [Использование psql](docs/2-psql)
-3. [Конфигурирование сервера](docs/3-configuration.md)
-4. Общее устройство PostgreSQL
-5. Изоляция и многоверсионность
-6. [Очистка](docs/6-vacuum.md)
-7. Буферный кеш и журнал
-8. [Базы данных и схемы](docs/8-databases.md)
-9. [Системный каталог](docs/9-catalog.md)
-10. [Табличные пространства](docs/10-tablespaces.md)
-11. [Низкий уровень](docs/11-lowlevel.md)
-12. [Мониторинг](docs/12-monitoring.md)
-13. [Управление доступом](docs/13-access.md)
-14. [Резервное копирование](docs/14-backup.md)
-15. [Физическая репликация](docs/15-physical-replication.md)
-16. [Логическая репликация](docs/16-logical-replication.md)
+[Отличия курсовой работы от курса DBA1](docs/meta.md)
+### Базовый инструментарий
+1. Управление сервером [теория](docs/theory/1-server-management.md) [практика](docs/practice/1-server-management.md)
+2. Использование psql [теория](docs/theory/2-psql) [практика](docs/practice/2-psql)
+3. Конфигурирование сервера [теория](docs/theory/3-configuration.md) [практика](docs/practice/3-configuration.md)
+### Архитектура
+4. Общее устройство PostgreSQL [теория](docs/theory/3-configuration.md)
+5. Изоляция и многоверсионность [теория](docs/theory/3-configuration.md)
+6. Очистка [теория](docs/theory/6-vacuum.md) [практика](docs/practice/6-vacuum.md)
+7. Буферный кеш и журнал [теория](docs/theory/3-configuration.md)
+### Организация данных
+8. Базы данных и схемы [теория](docs/theory/8-databases.md) [практика](docs/practice/8-databases.md)
+9. Системный каталог [теория](docs/theory/9-catalog.md) [практика](docs/practice/9-catalog.md)
+10. Табличные пространства [теория](docs/theory/10-tablespaces.md) [практика](docs/practice/10-tablespaces.md)
+11. Низкий уровень [теория](docs/theory/11-lowlevel.md) [практика](docs/practice/11-lowlevel.md)
+### Администрирование
+12. Мониторинг [теория](docs/12-monitoring.md) [практика](docs/practice/12-monitoring.md)
+13. Управление доступом [теория](docs/13-access.md) [практика](docs/practice/13-access.md)
+14. Резервное копирование [теория](docs/14-backup.md) [практика](docs/practice/14-backup.md)
+15. Физическая репликация [теория](docs/15-physical-replication.md) [практика](docs/practice/15-physical-replication.md)
+16. Логическая репликация [теория](docs/theory/16-logical-replication.md)
