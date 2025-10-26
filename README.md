@@ -8,10 +8,10 @@
 2. Использование psql [теория](docs/theory/2-psql) [практика](docs/practice/2-psql)
 3. Конфигурирование сервера [теория](docs/theory/3-configuration.md) [практика](docs/practice/3-configuration.md)
 ### Архитектура
-4. Общее устройство PostgreSQL [теория](docs/theory/3-configuration.md)
-5. Изоляция и многоверсионность [теория](docs/theory/3-configuration.md)
+4. Общее устройство PostgreSQL [теория](docs/theory/4-architecture.md)
+5. Изоляция и многоверсионность [теория](docs/theory/5-mvcc.md)
 6. Очистка [теория](docs/theory/6-vacuum.md) [практика](docs/practice/6-vacuum.md)
-7. Буферный кеш и журнал [теория](docs/theory/3-configuration.md)
+7. Буферный кеш и журнал [теория](docs/theory/7-wal.md)
 ### Организация данных
 8. Базы данных и схемы [теория](docs/theory/8-databases.md) [практика](docs/practice/8-databases.md)
 9. Системный каталог [теория](docs/theory/9-catalog.md) [практика](docs/practice/9-catalog.md)
