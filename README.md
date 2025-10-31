@@ -3,7 +3,11 @@
 ### Предварительная информация
 [Установка PostgreSQL в контейнере](docs/setup.md)
 
-[Отличия курсовой работы от курса DBA1 и рекомендуемый ход выполнения](docs/meta.md)
+[Отличия курсовой работы от курса DBA1](docs/meta.md)
+
+[Рекомендуемый ход выполнения](docs/workflow.md)
+
+[Оценивание выполнения курсовой работы](docs/grades.md)
 ### Базовый инструментарий
 1. Управление сервером | [теория](docs/theory/1-server-management.md) | [практика](docs/practice/1-server-management.md)
 2. Использование psql | [теория](docs/theory/2-psql) | [практика](docs/practice/2-psql)
