@@ -10,7 +10,7 @@
     - повторно проверьте статистику обращений
 2. Используйте расширение `pg_stat_statements`
     - установите параметр `shared_preload_libraries` (`ALTER SYSTEM SET shared_preload_libraries = 'pg_stat_statements';`)
-    - перезапустите контейнер
+    - перезапустите сервис db
     - установите расширение (`CREATE EXTENSION pg_stat_statements;`)
     - выполните несколько однотипных запросов `INSERT` в созданной ранее таблице
     - с помощью запроса к представлению `pg_stat_statements` покажите статистику по самым длительным запросам

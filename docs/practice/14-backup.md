@@ -17,18 +17,23 @@
     - зайдите в psql
     - проверьте содержимое таблицы
 5. Создайте физическую автономную резервную копию
+    - создайте роль `replicator` с правом репликации и паролем
+    ```psql
+    CREATE ROLE replicator REPLICATION LOGIN PASSWORD '...';
+    ```
     - в файл конфигурации `config/pg_hba.conf` добавьте строку
     `host    replication    replicator    0.0.0.0/0    scram-sha-256`
+    - перечитайте конфигурацию в psql сервиса db (с помощью `pg_reload_conf`)
     - запустите сервис db_replica (`docker compose up -d db_replica`)
     - зайдите в консоль сервиса db_replica
     - удалите все содержимое каталога с данными (`/var/lib/postgresql/data/*`)
-    - выполните копирование по сети из сервиса db (
+    - выполните копирование по сети из сервиса db
     ```bash
-    pg_basebackup -h db -p 5432 -U replicator --pgdata=/var/lib/postgresql/data --checkpoint=fast -v
+    pg_basebackup -h db -p 5432 -U replicator -W --pgdata=/var/lib/postgresql/data --checkpoint=fast -v
     ```
     - запустите PostgreSQL в сервисе db_replica
     ```bash
-    pg_ctl -D /var/lib/postgresql/data -o "-c config_file=/etc/postgresql/postgresql.conf -w" start
+    pg_ctl -D /var/lib/postgresql/data -o "-c config_file=/etc/postgresql/postgresql.conf" -w start
     ```
     - проверьте, что СУБД работает
     ```bash
