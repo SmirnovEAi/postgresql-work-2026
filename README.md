@@ -15,7 +15,7 @@
 0. [Установка PostgreSQL в контейнере](docs/setup.md)
 ### Базовый инструментарий
 1. Управление сервером | [теория](docs/theory/1-server-management.md) | [практика](docs/practice/1-server-management.md)
-2. Использование psql | [теория](docs/theory/2-psql.md) | [практика](docs/practice/2-psql)
+2. Использование psql | [теория](docs/theory/2-psql.md) | [практика](docs/practice/2-psql.md)
 3. Конфигурирование сервера | [теория](docs/theory/3-configuration.md) | [практика](docs/practice/3-configuration.md)
 ### Архитектура
 4. Общее устройство PostgreSQL | [теория](docs/theory/4-architecture.md)
