@@ -33,6 +33,7 @@ services:
       - pg_replica_data:/var/lib/postgresql/data
       - ./config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
       - ./.psqlrc:/var/lib/postgresql/.psqlrc:ro
+      - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
     depends_on:
       - db
 
